@@ -1,0 +1,42 @@
+def Resetthecalc():
+    answer = raw_input('Check for pythagorean triple? (Please enter yes or no)')
+    if answer.lower() == 'yes' or answer.lower() == 'y':
+        Checkthetriple()
+    elif answer.lower() == 'no' or answer.lower() == 'n':
+        print 'Program has ended...'
+    else:
+        print 'Invalid entry'
+
+def Checkthetriple():
+    a = raw_input('1st number:')
+    b = raw_input('2nd number:')
+    c = raw_input('3rd number:')
+
+    a = int(a)
+    b = int(b)
+    c = int(c)
+
+    if type(a) == int and type(b) == int and type(c) == int:
+        print 'commencing to check...'
+    else:
+        print 'Please input integers.'
+        Resetthecalc()
+        
+    leadin = 'This is a Pythagorean triple: '
+    if a > b and b > c and a**2 == b**2 + c**2:
+        print leadin + '(%d, %d, %d)' % (c, b, a)
+    elif a > c and c > b and a**2 == c**2 + b**2:  
+        print leadin + '(%d, %d, %d)' % (b, c, a)
+    elif b > a and a > c and b**2 == a**2 + c**2:
+        print leadin + '(%d, %d, %d)' % (c, a, b)
+    elif b > c and c > a and b**2 == c**2 + a**2:
+        print leadin + '(%d, %d, %d)' % (a, c, b)
+    elif c > b and b > a and c**2 == b**2 + a**2:
+        print leadin + '(%d, %d, %d)' % (a, b, c)
+    elif c > a and a > b and c**2 == a**2 + b**2:
+        print leadin + '(%d, %d, %d)' % (b, a, c)
+    else:
+        print 'This is not a Pythagorean triple.'
+        Resetthecalc()
+
+Resetthecalc()
