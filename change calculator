@@ -1,0 +1,81 @@
+def Reset():
+	answer = raw_input('Change needed? (Please say yes or no) ')
+	if answer.lower() == 'yes' or answer.lower() == 'y':
+		Change()
+	elif answer.lower() == 'no' or answer.lower() == 'n':
+		print 'Games over'
+	else:
+		print 'Please only say yes or no...' 
+
+def Change():
+    cost = float(raw_input('Meal Cost?  '))
+    paid = float(raw_input('Customer Paid?  '))
+    change =  paid - cost
+    print change
+    
+    i = 0
+    while i * 100 <= change:
+        a = i
+        hundreds  = 100 * a
+        i += 1
+    
+    change -= hundreds
+    i = 0
+    while i * 50 <= change:
+        b = i 
+        fifties = 50 * b
+        i += 1
+        
+    change -= fifties        
+    i = 0 
+    while i*20 <= change:
+        c = i
+        twenties = 20 * c
+        i += 1
+    
+    change -= twenties
+    i = 0
+    while i*10 <= change:
+        d = i
+        tens = 10 * d
+        i += 1
+    
+    change -= tens
+    i = 0 
+    while i*5 <= change:
+        e = i
+        fives= 5 * e
+        i += 1
+    
+    change -= fives
+    i = 0
+    while i <= change:
+        f = i
+        ones = f
+        i+= 1
+    
+    change -= ones
+    i = 0
+    while i*0.25 <= change:
+        g = i
+        quarters = 0.25 *g
+        i += 1
+    
+    change -= quarters
+    i = 0
+    while i*0.10 <= change:
+        h = i
+        dimes = 0.10 * h 
+        i += 1 
+    
+    change -= dimes
+    i = 0
+    while i*0.05 <= change:
+        j = i
+        nickels = 0.05 * j
+        i += 1
+    
+    print 'Hundreds: %d \n Fifties: %d \n Twenties: %d \n Tens: %d \n Fives: %d \n Ones: %d \n Quarters: %d \n Dimes: %d \n Nickels: %d \n Pennies: %d' % (a, b, c, d, e, f, g, h, j, i)
+    Reset()
+
+Reset()
