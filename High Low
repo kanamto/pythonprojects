@@ -1,0 +1,62 @@
+import random
+
+def Reset():
+	answer = raw_input('Game is high-low, wanna play? (Please say yes or no) ')
+	if answer.lower() == 'yes' or answer.lower() == 'y':
+		highlow()
+	elif answer.lower() == 'no' or answer.lower() == 'n':
+	    print 'Maybe next time...'
+	else:
+		print 'Please only say yes or no...' 
+
+def playagain():
+    playagain = raw_input('Play again? (Please say yes or no) ')
+    if playagain.lower() == 'yes' or playagain.lower() == 'y':
+        highlow()
+    elif playagain.lower() == 'no' or playagain.lower() == 'n':
+        print 'Maybe next time...'
+    else:
+        print 'Please only say yes or no...'
+        Reset()
+
+def highlow():
+	print 'Now picking any number between 1 and 100'
+	correct = random.randint(0,100)
+	guess = correct + 1 
+	while correct != guess:
+		a = 1
+		guess = raw_input('What is your guess? ')
+		if guess > correct:
+		    if guess - correct < 8:
+                print 'High and red hot!'
+            if guess - correct < 20:
+                print 'High and warmer'
+            elif guess - correct <= 50:
+                print 'High and getting warm'
+            elif guess - correct <= 100:
+                print 'High and cold'
+            else:
+                print 'This appears to be a bug (1)"
+                guess = correct
+		elif guess < correct:
+			if correct - guess < 8:
+				print 'Low, but red hot!'
+			elif correct - guess < 20:
+				print 'Low and warmer'
+			elif correct - guess <= 50:
+				print 'Low and getting warm'
+			elif correct - guess <= 100:
+				print 'Low and cold'
+			else:
+                print 'This appears to be a bug (2)"
+                guess = correct
+		elif guess == correct:
+			print 'Woah, good job! This only took you %d tries' % (a)
+		else:
+			print 'Somethings awry... Please report this bug (3)'
+			return False
+			#Good fail-safe to code in
+		a += 1
+	playagain() 
+
+Reset()
