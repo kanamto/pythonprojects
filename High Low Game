@@ -1,63 +1,45 @@
 #A simple game where the computer randomly selects a number between 1 and 100 and the user has to guess what the number is. After every guess, the computer should tell the user if the guess is higher or lower than the answer. When the user guesses the correct number, print out a congratulatory message.
-import random
 
-def Reset():
-	answer = raw_input('Game is high-low, wanna play? (Please say yes or no) ')
-	if answer.lower() == 'yes' or answer.lower() == 'y':
-		highlow()
-	elif answer.lower() == 'no' or answer.lower() == 'n':
-	    print 'Maybe next time...'
-	else:
-		print 'Please only say yes or no...' 
+from random import randint
 
-def playagain():
-    playagain = raw_input('Play again? (Please say yes or no) ')
-    if playagain.lower() == 'yes' or playagain.lower() == 'y':
+def play():
+    answer = raw_input('Game is high-low, wanna play? (Please say yes or no) ')
+    if answer.lower() == 'yes' or answer.lower() == 'y':
         highlow()
-    elif playagain.lower() == 'no' or playagain.lower() == 'n':
+    elif answer.lower() == 'no' or answer.lower() == 'n':
         print 'Maybe next time...'
     else:
-        print 'Please only say yes or no...'
-        Reset()
+        print 'Please only say yes or no...' 
 
 def highlow():
-	print 'Now picking any number between 1 and 100'
-	correct = random.randint(0,100)
-	guess = correct + 1 
-	while correct != guess:
-		a = 1
-		guess = raw_input('What is your guess? ')
-		if guess > correct:
-		    if guess - correct < 8:
-                print 'High and red hot!'
-            if guess - correct < 20:
-                print 'High and warmer'
-            elif guess - correct <= 50:
-                print 'High and getting warm'
-            elif guess - correct <= 100:
-                print 'High and cold'
+    tries = int(raw_input("How many tries you want? "))
+    answer = randint(1,100)
+    for i in range(tries):
+        userguess = int(raw_input("Any integer between 1 and 100, please: "))
+        if userguess < answer:
+            if answer - userguess < 10:
+                print "Low, but hot"
+            elif answer - userguess < 30:
+                print "Low, but warm"
             else:
-                print 'This appears to be a bug (1)"
-                guess = correct
-		elif guess < correct:
-			if correct - guess < 8:
-				print 'Low, but red hot!'
-			elif correct - guess < 20:
-				print 'Low and warmer'
-			elif correct - guess <= 50:
-				print 'Low and getting warm'
-			elif correct - guess <= 100:
-				print 'Low and cold'
-			else:
-                print 'This appears to be a bug (2)"
-                guess = correct
-		elif guess == correct:
-			print 'Woah, good job! This only took you %d tries' % (a)
-		else:
-			print 'Somethings awry... Please report this bug (3)'
-			return False
-			#Good fail-safe to code in
-		a += 1
-	playagain() 
-
-Reset()
+                print "Low and not even close"
+        elif userguess > answer:
+            if userguess - answer < 10:
+                print "High, but hot"
+            elif userguess - answer < 30:
+                print "High, but warm"
+            else:
+                print "High and not even close"
+        else:
+            print "You guess it, %d" %(answer)
+            playagain = raw_input('Play again? (Please say yes or no) ')
+            if playagain.lower() == 'yes' or playagain.lower() == 'y':
+                highlow()
+            elif playagain.lower() == 'no' or playagain.lower() == 'n':
+                print 'Maybe next time...'
+                break
+            else:
+                print 'Please only say yes or no...'
+                break
+            
+play() 
