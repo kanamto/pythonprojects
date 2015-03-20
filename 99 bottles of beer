@@ -2,12 +2,20 @@
 
 bottles = 99
 
-while bottles >= 0:
+while bottles >= 1:
     print "%d bottles of beer on the wall, %d bottles of beer..." % (bottles, bottles)
     print "Take one down, pass it around..." 
-    print "%d bottles of beer on the wall!" % (bottles-1)
+    if bottles-1 == 1:
+        print "%d bottle of beer on the wall!" % (bottles-1)
+    else:
+        print "%d bottles of beer on the wall!" % (bottles-1)
     again = raw_input("Again? ")
     if again == 'y':
         bottles -=1
     else:
         break
+    if bottles == 1:
+        print "%d bottle of beer on the wall, %d bottle of beer..." % (bottles, bottles)
+        print "Take one down, pass it around..." 
+        print "no more bottles of beer on the wall!"
+        bottles -=1
