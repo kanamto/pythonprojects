@@ -1,2 +1,13 @@
 #http://www.reddit.com/r/beginnerprojects/comments/19kxre/project_99_bottles_of_beer_on_the_wall_lyrics/
 
+bottles = 99
+
+while bottles >= 0:
+    print "%d bottles of beer on the wall, %d bottles of beer..." % (bottles, bottles)
+    print "Take one down, pass it around..." 
+    print "%d bottles of beer on the wall!" % (bottles-1)
+    again = raw_input("Again? ")
+    if again == 'y':
+        bottles -=1
+    else:
+        break
