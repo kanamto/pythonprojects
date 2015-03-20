@@ -1,0 +1,14 @@
+#http://www.reddit.com/r/beginnerprojects/comments/19r3qg/functionfibonacci_sequence/
+
+fibo = [0,1]
+
+nthterm = int(raw_input("Which term of the Fibonacci sequence would you like? "))
+
+i=0
+while i <= nthterm-1:
+    nextfibo = fibo[i] + fibo[i+1]
+    i +=1
+    fibo.append(nextfibo)
+
+print fibo[nthterm+1]
+print fibo
