@@ -1,0 +1,13 @@
+def digit_sum(n):
+    a = 1 
+    answer = 0
+    for i in range(len(str(n))):
+        if i < len(str(n))-1:
+            answer += (n - answer)/10**i % 10
+            a += 1
+        else:
+            answer += (n - answer)/10**i
+    return answer
+
+
+print digit_sum(5678)
