@@ -1,2 +1,3 @@
 # pythonprojects
-self-explanatory
+
+My practicum for learning Python
